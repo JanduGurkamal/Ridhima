@@ -12,9 +12,10 @@ class MediaSeeder extends Seeder
     {
         $user = User::first();
         if (!$user) {
-            $user = User::factory()->create([
+            $user = User::create([
                 'name' => 'Artist',
                 'email' => 'artist@example.com',
+                'password' => bcrypt('password'),
             ]);
         }
 

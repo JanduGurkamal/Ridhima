@@ -23,7 +23,12 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $faker = $this->faker ?? \Faker\Factory::create();
+        // Use fake() helper if available, otherwise fall back to Faker\Factory
+        if (function_exists('fake')) {
+            $faker = fake();
+        } else {
+            $faker = \Faker\Factory::create();
+        }
         
         return [
             'name' => $faker->name(),
